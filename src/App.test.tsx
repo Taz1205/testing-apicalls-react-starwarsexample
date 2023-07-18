@@ -22,6 +22,13 @@ const errorHandler = rest.get(
   }
 );
 
+const teaPotHandler = rest.get(
+  "https://swapi.dev/api/people/1/",
+  (req, res, ctx) => {
+    return res(ctx.status(418));
+  }
+);
+
 const server = setupServer(successHandler);
 
 beforeAll(() => server.listen());
@@ -29,7 +36,7 @@ afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
 test("renders first person from the mock server", async () => {
-  server.use(successHandler); // Use success handler for this test
+  server.use(successHandler);
   render(<App />);
   const nameElement = await screen.findByText(/Luke Skywalker/i);
   expect(nameElement).toBeInTheDocument();
@@ -41,5 +48,12 @@ test("displays an error message if the API returns a 500 status code", async () 
   const errorMessage = await screen.findByText(
     "Oops... something went wrong, try again 🤕"
   );
+  expect(errorMessage).toBeInTheDocument();
+});
+
+test("displays a teapot message if the API returns a 418 status code", async () => {
+  server.use(teaPotHandler); // Use 418 error handler for this test
+  render(<StarWarsCharacter />);
+  const errorMessage = await screen.findByText("418 I'm a tea pot 🫖, silly");
   expect(errorMessage).toBeInTheDocument();
 });
