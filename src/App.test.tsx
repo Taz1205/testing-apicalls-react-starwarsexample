@@ -43,7 +43,7 @@ test("renders first person from the mock server", async () => {
 });
 
 test("displays an error message if the API returns a 500 status code", async () => {
-  server.use(errorHandler); // Use error handler for this test
+  server.use(errorHandler);
   render(<StarWarsCharacter />);
   const errorMessage = await screen.findByText(
     "Oops... something went wrong, try again 🤕"
@@ -52,7 +52,7 @@ test("displays an error message if the API returns a 500 status code", async () 
 });
 
 test("displays a teapot message if the API returns a 418 status code", async () => {
-  server.use(teaPotHandler); // Use 418 error handler for this test
+  server.use(teaPotHandler);
   render(<StarWarsCharacter />);
   const errorMessage = await screen.findByText("418 I'm a tea pot 🫖, silly");
   expect(errorMessage).toBeInTheDocument();
