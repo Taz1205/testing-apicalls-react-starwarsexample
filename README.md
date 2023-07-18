@@ -15,32 +15,35 @@ These instructions will get you a copy of the project up and running on your loc
 
 1. Clone this repository to your local machine.
 
-```bash
-git clone https://github.com/Taz1205/testing-apicalls-react-starwarsexample/tree/main/src
+git clone <https://github.com/Taz1205/testing-apicalls-react-starwarsexample>
 
 Navigate to the project directory.
+
 - cd testing-apicalls-react-starwarsexample
 
 Install the dependencies.
 -yarn install
 -npm install
 
-#### Start the development server.
+#### Start the development server
 
 - yarn start
 - npm start
 
-The application will be running at http://localhost:3000.
+The application will be running at <http://localhost:3000>.
 
 Running the tests
 To run the tests, use the following command:
+
 - yarn test
 - npm test
 
 ##### Built With
+
 React - A JavaScript library for building user interfaces
 TypeScript - Typed JavaScript at Any Scale
 MSW - Seamless API mocking library for browser and Node.js
 
 ###### License
+
 This project is not licensed.
